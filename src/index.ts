@@ -63,7 +63,7 @@ async function generateHash(filePaths: string[]): Promise<string> {
   }
   const hash = crypto.createHash('md5');
   const buf = hash.update(hashes.join(''))
-                  .digest();
+    .digest();
   return buf.toString('hex');
 }
 
@@ -182,7 +182,7 @@ function raiseHashEntryDialog(api: types.IExtensionApi, gameId?: string) {
       { id: 'openFileLocation', value: false, text: 'Open File Location' },
     ],
   },
-  [ { label: 'Cancel' }, { label: 'Save' } ]);
+                        [ { label: 'Cancel' }, { label: 'Save' } ]);
 }
 
 function main(context: types.IExtensionContext) {
@@ -190,7 +190,7 @@ function main(context: types.IExtensionContext) {
   const testFunc: GameVersionProviderTest = testViability;
   const getGameVersionFunc: GameVersionProviderFunc = getHashVersion;
   context?.['registerGameVersionProvider']('hash-version-check', 75, testFunc,
-    (game, discovery) => getGameVersionFunc(hashMapper, game, discovery));
+                                           (game, discovery) => getGameVersionFunc(hashMapper, game, discovery));
 
   context.registerAPI('getHashVersion', (game: types.IGame,
                                          discovery: types.IDiscoveryResult,
@@ -216,7 +216,7 @@ function main(context: types.IExtensionContext) {
       .then(async details => {
         if (details?.hashFiles === undefined) {
           context.api.showErrorNotification('Game extension is not configured correctly',
-            'details.hashFiles is undefined', { allowReport: false });
+                                            'details.hashFiles is undefined', { allowReport: false });
           context.api.dismissNotification('generating-hash-notif');
           return;
         }
@@ -254,7 +254,7 @@ function main(context: types.IExtensionContext) {
             }
           } catch (err) {
             context.api.showErrorNotification('Failed to save hash entry',
-              err, { allowReport: false });
+                                              err, { allowReport: false });
           }
         }
         context.api.dismissNotification('generating-hash-notif');
@@ -281,7 +281,7 @@ function main(context: types.IExtensionContext) {
             }
           } catch (err) {
             context.api.showErrorNotification('Failed to save hash entry',
-              err, { allowReport: false });
+                                              err, { allowReport: false });
           }
         }
       });

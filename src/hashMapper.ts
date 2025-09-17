@@ -45,7 +45,7 @@ export class HashMapper {
     key.sort((lhs, rhs) => lhs - rhs);
     const hash = crypto.createHash('md5');
     const buf = hash.update(key.map(k => k.toString()).join(''))
-                    .digest();
+      .digest();
     return buf.toString('hex');
   }
 
@@ -72,7 +72,7 @@ export class HashMapper {
             } catch (err) {
               return reject(err);
             }
-        });
+          });
       }).on('error', (e) => {
         return reject(e);
       }).end();
