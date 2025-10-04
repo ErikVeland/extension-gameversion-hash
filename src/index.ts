@@ -290,7 +290,7 @@ function main(context: types.IExtensionContext) {
   context.once(() => {
     const wdPath = path.join(TEMP_PATH, WD_NAME);
     if (DEBUG_MODE) {
-      const git = require('simple-git/promise');
+      const git = require('simple-git');
       const gitBootstrap = git();
       gitBootstrap.clone('https://github.com/Nexus-Mods/Vortex-Backend.git', wdPath)
         .catch(err => err.message.includes('already exists')
